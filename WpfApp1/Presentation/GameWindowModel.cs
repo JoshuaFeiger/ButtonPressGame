@@ -135,7 +135,7 @@ namespace ButtonPressGame.Presentation
             if ((_buttonUp.IsActive == false) && (_buttonDown.IsActive == false) && (_buttonLeft.IsActive == false) && (_buttonRight.IsActive == false))
             {
                 timer.Dispose();
-                //todo: pop up an endgame window of some sort
+                //todo: pop up an endgame window of some sort, hmm
             }
         }
 

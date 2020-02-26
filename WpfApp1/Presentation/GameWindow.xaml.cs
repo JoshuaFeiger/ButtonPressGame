@@ -30,12 +30,12 @@ namespace ButtonPressGame
             DataContext = _gameWindowModel;
 
             InitializeComponent();
+
+            _gameWindowModel.BeginPlay();
         }
 
         private void Button_Clicked(object sender, RoutedEventArgs e)
         {
-            
-
             _gameWindowModel.ButtonPressed(ConvertObjectToName(sender));
         }
 
@@ -64,9 +64,12 @@ namespace ButtonPressGame
             return nameOfObject;
         }
 
-        private void StartButton_Click(object sender, RoutedEventArgs e)
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-            _gameWindowModel.MainLoop();
+            HelpView helpView = new HelpView();
+            _gameWindowModel.PauseGame();
+            helpView.ShowDialog();
+            _gameWindowModel.UnpauseGame();
         }
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
 
 namespace ButtonPressGame.Models
 {
@@ -12,6 +14,7 @@ namespace ButtonPressGame.Models
         public Button()
         {
             _isActive = true;
+            _color = Brushes.MediumAquamarine;
         }
 
         private double _countdownTimer;
@@ -25,6 +28,22 @@ namespace ButtonPressGame.Models
                 if (CountdownTimer < 0)
                 {
                     LoadNext();
+                }
+                else if (CountdownTimer < 6)
+                {
+                    _color = Brushes.Red;
+                }
+                else if (CountdownTimer < 10)
+                {
+                    _color = Brushes.Orange;
+                }
+                else if (CountdownTimer < 15)
+                {
+                    _color = Brushes.Aquamarine;
+                }
+                else
+                {
+                    _color = Brushes.Azure;
                 }
             }
         }
@@ -50,6 +69,7 @@ namespace ButtonPressGame.Models
         {
             if (_buttonTimeList.ToArray().Length <= 1 && _buttonTimeList.ToArray().Length >= 0)
             {
+                _color = Brushes.Aqua;
                 _countdownTimer = 0;
                 _isActive = false;
             }
@@ -61,5 +81,12 @@ namespace ButtonPressGame.Models
             }
         }
 
+        private System.Windows.Media.SolidColorBrush _color;
+
+        public System.Windows.Media.SolidColorBrush Color
+        {
+            get { return _color; }
+            set { _color = value; }
+        }
     }
 }

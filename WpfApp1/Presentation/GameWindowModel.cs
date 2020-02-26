@@ -105,15 +105,22 @@ namespace ButtonPressGame.Presentation
             _buttonRight.CountdownTimer = _buttonRight.ButtonTimeList[0];
         }
 
-        public void MainLoop()
-        {
-            //from https://stackoverflow.com/questions/15879476/creating-a-background-timer-to-run-asynchronously
-            // Create a 30 min timer 
-            System.Timers.Timer timer = new System.Timers.Timer(10);
 
+        //from https://stackoverflow.com/questions/15879476/creating-a-background-timer-to-run-asynchronously
+        // Create a 10 millisecond timer
+        private System.Timers.Timer timer = new System.Timers.Timer(10);
+
+        public System.Timers.Timer Timer
+        {
+            get { return timer; }
+            set { timer = value; }
+        }
+
+
+        public void BeginPlay()
+        {
             // Hook up the Elapsed event for the timer.
             timer.Elapsed += OnTimedEvent;
-
             timer.Enabled = true;
         }
 
@@ -175,9 +182,18 @@ namespace ButtonPressGame.Presentation
                     break;
                 default:
                     throw new Exception("Button couldn't be converted to a Button object in GameWindowModel.");
-                    break;
             }
             return buttonObject;
+        }
+
+        public void PauseGame()
+        {
+            timer.Stop();
+        }
+
+        public void UnpauseGame()
+        {
+            timer.Start();
         }
     }
 }

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ButtonPressGame"
         mc:Ignorable="d"
-        Title="Button Press Time" Height="450" Width="800">
+        Title="Button Press Time" Height="450" Width="800"
+        Background="Cyan">
     <Grid>
         <Label 
             Content="Button Press Time!" 
@@ -20,56 +21,70 @@
             <StackPanel
                 Orientation="Vertical"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Center">
+                VerticalAlignment="Center"
+                Background="{Binding ButtonLeft.Color}"
+                Width="90"
+                Height="120">
                 <Button 
                     Content="LeftButton" 
-                    HorizontalAlignment="Left"  
+                    HorizontalAlignment="Center"  
                     VerticalAlignment="Center" 
-                    Margin="0,0,0,0" 
+                    Margin="0,5,0,0" 
                     Width="75"
                     Height="75"
                     Click="Button_Clicked"/>
                 <Slider
                     x:Name="LeftButtonTimer"
+                    Width="75"
                     IsEnabled="False"
-                    Value="{Binding ButtonLeft.CountdownTimer}"></Slider>
+                    Value="{Binding ButtonLeft.CountdownTimer}"
+                    Background="{Binding ButtonLeft.Color}"></Slider>
                 <TextBlock
                     HorizontalAlignment="Center">|</TextBlock>
             </StackPanel>
             <StackPanel
                 Orientation="Vertical"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Center">
+                VerticalAlignment="Center"
+                Background="{Binding ButtonRight.Color}"
+                Width="90"
+                Height="120">
                 <Button 
                     Content="RightButton" 
-                    HorizontalAlignment="Left"  
+                    HorizontalAlignment="Center"  
                     VerticalAlignment="Center" 
-                    Margin="0,0,0,0" 
+                    Margin="0,5,0,0" 
                     Width="75"
                     Height="75"
                     Click="Button_Clicked"/>
                 <Slider
                     x:Name="RightButtonTimer"
                     IsEnabled="False"
-                    Value="{Binding ButtonRight.CountdownTimer}"></Slider>
+                    Width="75"
+                    Value="{Binding ButtonRight.CountdownTimer}"
+                    Foreground="{Binding ButtonRight.Color}"></Slider>
                 <TextBlock
                     HorizontalAlignment="Center">|</TextBlock>
             </StackPanel>
             <StackPanel
                 Orientation="Vertical"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Top">
+                VerticalAlignment="Top"
+                Background="{Binding ButtonUp.Color}"
+                Width="90"
+                Height="120">
                 <Button 
                     Content="UpButton" 
-                    HorizontalAlignment="Left"  
+                    HorizontalAlignment="Center"  
                     VerticalAlignment="Center" 
-                    Margin="0,0,0,0" 
+                    Margin="0,5,0,0" 
                     Width="75"
                     Height="75"
                     Click="Button_Clicked"/>
                 <Slider
                     x:Name="UpButtonTimer"
                     IsEnabled="False"
+                    Width="75"
                     Value="{Binding ButtonUp.CountdownTimer}"></Slider>
                 <TextBlock
                     HorizontalAlignment="Center">|</TextBlock>
@@ -77,24 +92,28 @@
             <StackPanel
                 Orientation="Vertical"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Bottom">
+                VerticalAlignment="Bottom"
+                Background="{Binding ButtonDown.Color}"
+                Width="90"
+                Height="120">
                 <Button 
                     Content="DownButton" 
-                    HorizontalAlignment="Left"  
+                    HorizontalAlignment="Center"  
                     VerticalAlignment="Center" 
-                    Margin="0,0,0,0" 
+                    Margin="0,5,0,0" 
                     Width="75"
                     Height="75"
                     Click="Button_Clicked"/>
                 <Slider
                     x:Name="BottomButtonTimer"
                     IsEnabled="False"
+                    Width="75"
                     Value="{Binding ButtonDown.CountdownTimer}"></Slider>
                 <TextBlock
                     HorizontalAlignment="Center">|</TextBlock>
             </StackPanel>
         </Grid>
         <TextBlock HorizontalAlignment="Left" Margin="680,60,0,0" TextWrapping="Wrap" Text="{Binding Score}" VerticalAlignment="Top"/>
-        <Button Content="Start!" HorizontalAlignment="Left" Margin="44,195,0,0" VerticalAlignment="Top" Width="75" Click="StartButton_Click"/>
+        <Button Content="Help" HorizontalAlignment="Left" Margin="44,195,0,0" VerticalAlignment="Top" Width="75" Click="HelpButton_Click"/>
     </Grid>
 </Window>

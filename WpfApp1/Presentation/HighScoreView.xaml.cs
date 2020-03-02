@@ -11,23 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ButtonPressGame.Presentation;
 
 namespace ButtonPressGame.Presentation
 {
     /// <summary>
-    /// Interaction logic for HelpView.xaml
+    /// Interaction logic for HighScoreView.xaml
     /// </summary>
-    public partial class HelpView : Window
+    public partial class HighScoreView : Window
     {
-        public HelpView()
+        public HighScoreView()
         {
             InitializeComponent();
-        }
-
-        private void OKButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

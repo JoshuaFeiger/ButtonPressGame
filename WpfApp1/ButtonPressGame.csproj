@@ -59,6 +59,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Presentation\HighScoreView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Presentation\MainMenuWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -74,10 +78,16 @@
     <Compile Include="Business\GameBusiness.cs" />
     <Compile Include="Data\Level\ILevelDataService.cs" />
     <Compile Include="Data\Level\LevelDataService_Text.cs" />
+    <Compile Include="Data\User\IUserDataService.cs" />
+    <Compile Include="Data\User\UserDataService_Text.cs" />
     <Compile Include="Models\Button.cs" />
+    <Compile Include="Models\Player.cs" />
     <Compile Include="Presentation\GameWindowModel.cs" />
     <Compile Include="Presentation\HelpView.xaml.cs">
       <DependentUpon>HelpView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\HighScoreView.xaml.cs">
+      <DependentUpon>HighScoreView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\MainMenuWindow.xaml.cs">
       <DependentUpon>MainMenuWindow.xaml</DependentUpon>
@@ -126,6 +136,18 @@
     <Resource Include="bin\Debug\Data\Level\Level_01.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\User\Player1\TextFile1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\User\HighScores_Level_01.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bin\Debug\Data\User\HighScores_Level_01.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bin\Debug\Data\User\Player1\TextFile1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

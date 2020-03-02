@@ -10,7 +10,6 @@ namespace ButtonPressGame.Models
 {
     public class Button
     {
-
         public Button()
         {
             _isActive = true;

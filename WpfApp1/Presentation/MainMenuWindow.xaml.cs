@@ -34,7 +34,7 @@ namespace ButtonPressGame
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
             GameWindow gameWindow = new GameWindow();
-            gameWindow.Show();
+            gameWindow.ShowDialog();
         }
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)

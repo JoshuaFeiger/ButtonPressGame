@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ButtonPressGame.Models;
 using ButtonPressGame.Buisness;
 using System.Threading;
+using System.Windows;
 
 namespace ButtonPressGame.Presentation
 {
@@ -78,6 +79,20 @@ namespace ButtonPressGame.Presentation
         }
 
         //
+        //PLAYER1 OBJECT
+        //Instantiated here.
+        //
+
+        private Player _player1;
+
+        public Player Player1
+        {
+            get { return _player1; }
+            set { _player1 = value; }
+        }
+
+
+        //
         //SCORE VARIABLE
         //Instantiated here.
         //
@@ -122,6 +137,8 @@ namespace ButtonPressGame.Presentation
             // Hook up the Elapsed event for the timer.
             timer.Elapsed += OnTimedEvent;
             timer.Enabled = true;
+
+            _player1 = new Player();
         }
 
         private void OnTimedEvent(object source, EventArgs e)
@@ -135,21 +152,30 @@ namespace ButtonPressGame.Presentation
             OnPropertyChanged(nameof(ButtonDown));
             OnPropertyChanged(nameof(ButtonLeft));
             OnPropertyChanged(nameof(ButtonRight));
-            /*ButtonTimerChange(_buttonUp, -0.1, nameof(_buttonUp));
-            ButtonTimerChange(_buttonDown, -0.1, nameof(_buttonDown));
-            ButtonTimerChange(_buttonLeft, -0.1, nameof(_buttonLeft));
-            ButtonTimerChange(_buttonRight, -0.1, nameof(_buttonRight));*/
+
             if ((_buttonUp.IsActive == false) && (_buttonDown.IsActive == false) && (_buttonLeft.IsActive == false) && (_buttonRight.IsActive == false))
             {
                 timer.Dispose();
-                //todo: pop up an endgame window of some sort, hmm
+                int Index = 0;
+                List<(double, string)> HighScoresTemp = _gameBusiness.HighScores;
+                foreach ((double, string) highScoreData in HighScoresTemp)
+                {
+                    if (_score > highScoreData.Item1)
+                    {
+                        HighScoresTemp.Insert(Index, (_score, _player1.Name));
+                        break;
+                    }
+                    Index++;
+                }
+                _gameBusiness.HighScores = HighScoresTemp;
+                HighScoresTemp.RemoveRange(10, (HighScoresTemp.Count() - 10));
+                string MessageBoxText = "High scores for this level: \n\n";
+                foreach ((double, string) item in HighScoresTemp)
+                {
+                    MessageBoxText = $"{MessageBoxText}\n{item.Item1}";
+                }
+                MessageBox.Show(MessageBoxText);
             }
-        }
-
-        private void ButtonTimerChange(Button button, double changeBy, string name)
-        {
-            button.CountdownTimer += changeBy;
-            OnPropertyChanged($"{name}");
         }
 
         internal void ButtonPressed(string ButtonName)
@@ -193,7 +219,14 @@ namespace ButtonPressGame.Presentation
 
         public void UnpauseGame()
         {
-            timer.Start();
+            try
+            {
+                timer.Start();
+            }
+            catch (Exception)
+            {
+                //do nothing; the only exceptions that should come up involve the timer having been disposed of.
+            }
         }
     }
 }

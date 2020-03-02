@@ -1,0 +1,16 @@
+388,Player1
+386,Player1
+385,Player1
+384,Player1
+382,Player1
+382,Player1
+379,Player1
+377,Player1
+188,Player1
+100,Player1
+100,Player1
+99,Player1
+98,Player1
+97,Player1
+96,Player1
+96,Player1
